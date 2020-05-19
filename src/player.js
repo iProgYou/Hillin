@@ -54,10 +54,14 @@ class Player {
         // this.pos[1] += this.velocity[1]
     }
 
+    checkCollision() {
+
+    }
+
     jump() {
 
         this.isJumping = false;
     }
 }
 
-module.exports = Player;
+export default Player;

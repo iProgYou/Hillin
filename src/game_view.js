@@ -10,4 +10,4 @@ class GameView {
 }
 
 
-module.exports = GameView;
+export default GameView;

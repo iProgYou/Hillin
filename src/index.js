@@ -1,6 +1,6 @@
 // const MovingObject = require("./moving_object");
-const GameView = require("./game_view")
-const Game = require("./game");
+import Game from './game';
+import GameView from './game_view';
 
 document.addEventListener("DOMContentLoaded", () => {
     const elCanvas = document.getElementById("game-canvas");
