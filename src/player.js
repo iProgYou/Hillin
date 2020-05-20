@@ -32,63 +32,59 @@ class Player {
         console.log(keysPressed)
         this.velocityX = 0;
         if (keysPressed['d']) {
-            if (this.posX < 973) {
-                this.velocityX = 7;
-            }
+            this.velocityX = 7;
         }
         if (keysPressed['a']) {
-            if (this.posX > 0) {
-                this.velocityX = -7;
-            }
+            this.velocityX = -7;
         }
         // Dash ///////////////////////////////
         
-        if (keysPressed[' ']) {
-            debugger
-            console.log('AYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
-            if (!this.isDashing) {
-                this.isDashing = true
-                this.dashAcc = 20
-                // this.dash(keysPressed)
-                if (keysPressed['ArrowRight'] && keysPressed['ArrowUp']) { // up right dash
-                    this.dashDir = [1,-1];
-                } else if (keysPressed['ArrowLeft'] && keysPressed['ArrowUp']) { // up left dash
-                    this.dashDir = [-1,-1];
-                } else if (keysPressed['ArrowRight']) { // right dash
-                    this.dashDir = [1,0]
-                } else if (keysPressed['ArrowUp']) { // up dash
-                    this.dashDir = [0,-1]
-                } else if (keysPressed['ArrowLeft']) { // left dash
-                    this.dashDir = [-1,0]
-                } else if (this.facingRight) {
-                    this.dashDir = [1,0]
-                } else {
-                    this.dashDir = [-1,0]
-                }
-            }
-        }
+        // if (keysPressed[' ']) {
+        //     debugger
+        //     console.log('AYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+        //     if (!this.isDashing) {
+        //         this.isDashing = true
+        //         this.dashLength = 20
+        //         // this.dash(keysPressed)
+        //         if (keysPressed['ArrowRight'] && keysPressed['ArrowUp']) { // up right dash
+        //             this.dashDir = [1,-1];
+        //         } else if (keysPressed['ArrowLeft'] && keysPressed['ArrowUp']) { // up left dash
+        //             this.dashDir = [-1,-1];
+        //         } else if (keysPressed['ArrowRight']) { // right dash
+        //             this.dashDir = [1,0]
+        //         } else if (keysPressed['ArrowUp']) { // up dash
+        //             this.dashDir = [0,-1]
+        //         } else if (keysPressed['ArrowLeft']) { // left dash
+        //             this.dashDir = [-1,0]
+        //         } else if (this.facingRight) {
+        //             this.dashDir = [1,0]
+        //         } else {
+        //             this.dashDir = [-1,0]
+        //         }
+        //     }
+        // }
 
-        if (this.isDashing) {
-            debugger
-            this.velocityX += 2;
-            this.velocityY += 2;
-            this.velocityX *= this.dashDir[0];
-            this.velocityY *= this.dashDir[1];
-            this.dashLength -= 2;
-        }
-
-        if (this.dashLength <= 0) {
-            this.isDashing = false;
-            this.dashDir = [0,0];
-        }
-
-        if (!this.isDashing) this.velocityY = -this.gravity;
+        // if (this.isDashing && this.dashLength > 0){
+        //     this.velocityY = 0;
+        //     this.velocityX += 7;
+        //     this.velocityY += 7;
+        //     this.velocityX *= this.dashDir[0];
+        //     this.velocityY *= this.dashDir[1];
+        //     this.dashLength -= 2;
+        // } else {
+        //     this.velocityY = -this.gravity;
 
         if (this.velocityX != 0){
             this.posX += this.velocityX;
+            if (this.posX > 973) {
+                this.posX = 973;
+            } else if (this.posX < 0){
+                this.posX = 0;
+            }
         }
 
         // Jump /////////////////////////////////////////
+        this.velocityY = -this.gravity;
         if (keysPressed['w']) {
             if(!this.isJumping){
                 this.isJumping = true;
