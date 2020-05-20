@@ -1,5 +1,6 @@
 import Player from "./player";
 import Levels from './levels';
+import Tile from '../assets/Tiles/grassMid.png';
 
 class Game {
     constructor(keysPressed) {
@@ -34,7 +35,21 @@ class Game {
 
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
-
+                    // img = new Image();
+                    // img.src = Tile;
+                    // img.onload = () => {
+                    //     ctx.drawImage(
+                    //         img,
+                    //         platformXPos,
+                    //         platformYPos,
+                    //         img.width,
+                    //         img.height,
+                    //         platformXPos, 
+                    //         platformYPos, 
+                    //         Game.MAP_EL_WIDTH, 
+                    //         Game.MAP_EL_HEIGHT
+                    //     )
+                    // }
                     ctx.fillStyle = this.ground_color
                     ctx.fillRect(
                         platformXPos, 

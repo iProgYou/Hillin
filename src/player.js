@@ -6,17 +6,16 @@ class Player {
         this.width = 20;
         this.gravity = -5;
         this.isJumping = false;
-        this.isDashing = false;
         this.facingRight = true;
-        this.dashLength = 20;
-        this.dashAcc = 0;
-        this.dashDir = [0,0];
+        // this.isDashing = false;
+        // this.dashLength = 20;
+        // this.dashAcc = 0;
+        // this.dashDir = [0,0];
         this.jumpAcc = -1;
         this.jumpFrameDelay = 0;
         this.velocityX = 0;
         this.velocityY = 0;
         this.maxVelocity = 100;
-        console.log(this.maxVelocity)
         this.friction = 0.2;
         // this.height = playerData["height"];
         // this.width = playerData["width"];
@@ -55,7 +54,7 @@ class Player {
         //         } else if (keysPressed['ArrowUp']) { // up dash
         //             this.dashDir = [0,-1]
         //         } else if (keysPressed['ArrowLeft']) { // left dash
-        //             this.dashDir = [-1,0]
+        //             this.dashDir = d [-1,0]
         //         } else if (this.facingRight) {
         //             this.dashDir = [1,0]
         //         } else {
@@ -85,7 +84,7 @@ class Player {
 
         // Jump /////////////////////////////////////////
         this.velocityY = -this.gravity;
-        if (keysPressed['w']) {
+        if (keysPressed[' ']) {
             if(!this.isJumping){
                 this.isJumping = true;
                 this.jumpAcc = 14;
