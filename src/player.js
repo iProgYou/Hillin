@@ -4,10 +4,15 @@ class Player {
         this.posY = playerData["pos"][1];
         this.height = 40;
         this.width = 20;
-        this.gravity = -3;
+        this.gravity = -5;
         this.isJumping = false;
         this.isDashing = false;
-        this.jumpAcc = -7;
+        this.facingRight = true;
+        this.dashLength = 20;
+        this.dashAcc = 0;
+        this.dashDir = [0,0];
+        this.jumpAcc = -1;
+        this.jumpFrameDelay = 0;
         this.velocityX = 0;
         this.velocityY = 0;
         this.maxVelocity = 100;
@@ -36,25 +41,59 @@ class Player {
                 this.velocityX = -7;
             }
         }
-
-        if (keysPressed['space']) {
+        // Dash ///////////////////////////////
+        
+        if (keysPressed[' ']) {
+            debugger
             console.log('AYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
             if (!this.isDashing) {
                 this.isDashing = true
-                this.dash(keysPressed)
+                this.dashAcc = 20
+                // this.dash(keysPressed)
+                if (keysPressed['ArrowRight'] && keysPressed['ArrowUp']) { // up right dash
+                    this.dashDir = [1,-1];
+                } else if (keysPressed['ArrowLeft'] && keysPressed['ArrowUp']) { // up left dash
+                    this.dashDir = [-1,-1];
+                } else if (keysPressed['ArrowRight']) { // right dash
+                    this.dashDir = [1,0]
+                } else if (keysPressed['ArrowUp']) { // up dash
+                    this.dashDir = [0,-1]
+                } else if (keysPressed['ArrowLeft']) { // left dash
+                    this.dashDir = [-1,0]
+                } else if (this.facingRight) {
+                    this.dashDir = [1,0]
+                } else {
+                    this.dashDir = [-1,0]
+                }
             }
         }
+
+        if (this.isDashing) {
+            debugger
+            this.velocityX += 2;
+            this.velocityY += 2;
+            this.velocityX *= this.dashDir[0];
+            this.velocityY *= this.dashDir[1];
+            this.dashLength -= 2;
+        }
+
+        if (this.dashLength <= 0) {
+            this.isDashing = false;
+            this.dashDir = [0,0];
+        }
+
+        if (!this.isDashing) this.velocityY = -this.gravity;
 
         if (this.velocityX != 0){
             this.posX += this.velocityX;
         }
 
-
-        this.velocityY = -this.gravity;
+        // Jump /////////////////////////////////////////
         if (keysPressed['w']) {
             if(!this.isJumping){
                 this.isJumping = true;
-                this.jumpAcc = 11;
+                this.jumpAcc = 14;
+                this.jumpFrameDelay = 0;
             }
         }
         if(this.jumpAcc > 0){
@@ -70,18 +109,7 @@ class Player {
     }
 
     dash(keysPressed) {
-        let dir;
-        if (keysPressed['ArrowRight'] && keysPressed['ArrowUp']) { // up right dash
-            dir = [1,-1];
-        } else if (keysPressed['ArrowLeft'] && keysPressed['ArrowUp']) { // up left dash
-            dir = [-1,-1];
-        } else if (keysPressed['ArrowRight']) { // right dash
-            dir = [1,0]
-        } else if (keysPressed['ArrowUp']) { // up dash
-            dir = [0,-1]
-        } else if (keysPressed['ArrowLeft']) { // left dash
-            dir = [-1,0]
-        }
+        
         // if ()
     }
 
@@ -139,7 +167,11 @@ class Player {
             } else {
                 if (dY < 0){ // object came from the top
                     console.log("FROM TOP")
-                    this.isJumping = false;
+                    if(this.jumpFrameDelay > 10){
+                        this.isJumping = false;
+                    } else {
+                        this.jumpFrameDelay++;
+                    }
                     this.posY -= oY;
                 }
                 else { // object came from the bottom
