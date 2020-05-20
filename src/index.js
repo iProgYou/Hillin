@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, false);
     
     const ctx = elCanvas.getContext("2d");
-    const game = new Game(keysPressed);
+    window.game = new Game(keysPressed);
     const gameView = new GameView(ctx,game);
     gameView.start();
 
