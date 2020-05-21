@@ -75,8 +75,8 @@ class Player {
 
         if (this.velocityX != 0){
             this.posX += this.velocityX;
-            if (this.posX > 973) {
-                this.posX = 973;
+            if (this.posX > 980) {
+                this.posX = 980;
             } else if (this.posX < 0){
                 this.posX = 0;
             }

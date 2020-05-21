@@ -1,6 +1,6 @@
 import Player from "./player";
 import Levels from './levels';
-import Tile from '../assets/Tiles/grassMid.png';
+// import Tile from '../assets/Tiles/grassMid.png';
 
 class Game {
     constructor(keysPressed) {
@@ -10,8 +10,9 @@ class Game {
         Game.MAP_EL_HEIGHT = 50;
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
+        this.levelNum = 1
         this.player = new Player({
-            pos: [20, 410],
+            pos: Levels[this.levelNum].startPos,
             color: "#00FF00"
         });
     }
@@ -23,7 +24,7 @@ class Game {
     //     this.player.draw(ctx)
     // }
 
-    drawLevel(ctx,level) {
+    drawLevel(ctx) {
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
         // screen.draw or level.draw
         // enamies.draw
@@ -31,32 +32,32 @@ class Game {
         // i = y coord, j = x coord
         for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
             for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
-                if (level[i][j] === 'g') {
+                if (Levels[this.levelNum].level[i][j] === 'g') {
 
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
-                    // img = new Image();
-                    // img.src = Tile;
-                    // img.onload = () => {
-                    //     ctx.drawImage(
-                    //         img,
-                    //         platformXPos,
-                    //         platformYPos,
-                    //         img.width,
-                    //         img.height,
-                    //         platformXPos, 
-                    //         platformYPos, 
-                    //         Game.MAP_EL_WIDTH, 
-                    //         Game.MAP_EL_HEIGHT
-                    //     )
-                    // }
-                    ctx.fillStyle = this.ground_color
-                    ctx.fillRect(
-                        platformXPos, 
-                        platformYPos, 
-                        Game.MAP_EL_WIDTH, 
-                        Game.MAP_EL_HEIGHT
-                    );
+                    let img = new Image();
+                    img.src = '../assets/Tiles/grassMid.png';
+                    img.onload = () => {
+                        ctx.drawImage(
+                            img,
+                            platformXPos,
+                            platformYPos,
+                            // img.width,
+                            // img.height,
+                            // platformXPos, 
+                            // platformYPos, 
+                            // Game.MAP_EL_WIDTH, 
+                            // Game.MAP_EL_HEIGHT
+                        )
+                    }
+                    // ctx.fillStyle = this.ground_color
+                    // ctx.fillRect(
+                    //     platformXPos, 
+                    //     platformYPos, 
+                    //     Game.MAP_EL_WIDTH, 
+                    //     Game.MAP_EL_HEIGHT
+                    // );
                 }
             }
         }
@@ -73,7 +74,7 @@ class Game {
 
     
     step(ctx) {
-        let level = Levels[0]
+        let level = Levels[this.levelNum].level
         this.player.move(this.keysPressed);
 
         for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
@@ -98,7 +99,7 @@ class Game {
 
         // this.checkCollisions()
         // debugger
-        this.drawLevel(ctx,level);
+        // this.drawLevel(ctx,level);
         // this.moveObjects(); 
         // this.checkCollisions();
 
