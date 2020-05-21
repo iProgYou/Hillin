@@ -48,7 +48,7 @@ class Game {
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
                     let img = new Image();
-                    img.src = '../assets/Tiles/small/resized_grassMid.png';
+                    img.src = './assets/Tiles/small/resized_grassMid.png';
                     img.onload = () => {
                         ctx.drawImage(
                             img,

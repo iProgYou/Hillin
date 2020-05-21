@@ -4,7 +4,7 @@ class Player {
         this.posY = playerData["pos"][1];
         this.height = 40;
         this.width = 20;
-        this.gravity = -5;
+        this.gravity = -6;
         this.isJumping = false;
         this.facingRight = true;
         this.maxXValue = gameWidth - this.width
