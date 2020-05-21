@@ -1,5 +1,17 @@
 #game-canvas { 
-    height: 500px;
-    width: 1000px;
+    height: 700px;
+    width: 1400px;
+    z-index: 2;
+}
+
+#background-canvas{
+    height: 700px;
+    width: 1400px;
     background-color: #00aef3;
+    z-index: 1;
+    background-image: url('../assets/resized_galaxy.jpg');
+}
+
+canvas{
+    position: absolute;
 }

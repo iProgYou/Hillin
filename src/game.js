@@ -4,17 +4,20 @@ import Levels from './levels';
 
 class Game {
     constructor(keysPressed) {
-        Game.DIM_X = 1000; 
-        Game.DIM_Y = 500;
+        Game.DIM_X = 1400; 
+        Game.DIM_Y = 700;
         Game.MAP_EL_WIDTH = 50;
         Game.MAP_EL_HEIGHT = 50;
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
         this.levelNum = 1
+        this.level = Levels[this.levelNum].level
         this.player = new Player({
-            pos: Levels[this.levelNum].startPos,
-            color: "#00FF00"
-        });
+                pos: Levels[this.levelNum].startPos,
+                color: "#00FF00"
+            },
+            Game.DIM_X
+        );
     }
 
     // draw(ctx) {
@@ -25,26 +28,34 @@ class Game {
     // }
 
     drawLevel(ctx) {
-        ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
+        // ctx.clearRect(this.posX, this.posY, this.width, this.height)
+
+
+        debugger;
+        
+        
+
         // screen.draw or level.draw
         // enamies.draw
         // level is a 2d array
         // i = y coord, j = x coord
-        for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
-            for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
-                if (Levels[this.levelNum].level[i][j] === 'g') {
+        // for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
+        //     for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
+        for (let i = 0; i < this.level.length; i ++) {
+            for (let j = 0; j < this.level[i].length; j ++) {
+                if (this.level[i][j] === 'g') {
 
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
                     let img = new Image();
-                    img.src = '../assets/Tiles/grassMid.png';
+                    img.src = '../assets/Tiles/small/resized_grassMid.png';
                     img.onload = () => {
                         ctx.drawImage(
                             img,
                             platformXPos,
                             platformYPos,
-                            // img.width,
-                            // img.height,
+                            img.width,
+                            img.height,
                             // platformXPos, 
                             // platformYPos, 
                             // Game.MAP_EL_WIDTH, 
@@ -61,7 +72,6 @@ class Game {
                 }
             }
         }
-        this.player.draw(ctx)
     }
 
     checkCollisions(objA,objB) {
@@ -74,12 +84,11 @@ class Game {
 
     
     step(ctx) {
-        let level = Levels[this.levelNum].level
         this.player.move(this.keysPressed);
 
         for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
             for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
-                if (level[i][j] === 'g') {
+                if (this.level[i][j] === 'g') {
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
                     let mapEl = {
@@ -95,7 +104,8 @@ class Game {
             }
         }
         console.log(this.player.posX,this.player.posY)
-        this.player.step();
+        ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
+        this.player.draw(ctx)
 
         // this.checkCollisions()
         // debugger

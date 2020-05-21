@@ -4,8 +4,12 @@ import GameView from './game_view';
 
 document.addEventListener("DOMContentLoaded", () => {
     const elCanvas = document.getElementById("game-canvas");
-    elCanvas.height = 500;
-    elCanvas.width = 1000;
+    const backgroundCanvas = document.getElementById("background-canvas")
+
+    elCanvas.height = 700;
+    elCanvas.width = 1400;
+    backgroundCanvas.height = 700;
+    backgroundCanvas.width = 1400;
 
     let keysPressed = {};
     document.addEventListener("keydown", (e) => {
@@ -16,8 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, false);
     
     const ctx = elCanvas.getContext("2d");
+    const ctxBackground = backgroundCanvas.getContext("2d");
     window.game = new Game(keysPressed);
-    const gameView = new GameView(ctx,game);
+    const gameView = new GameView(ctx,ctxBackground,game);
     gameView.start();
 
 })
