@@ -62,13 +62,6 @@ class Game {
                             // Game.MAP_EL_HEIGHT
                         )
                     }
-                    // ctx.fillStyle = this.ground_color
-                    // ctx.fillRect(
-                    //     platformXPos, 
-                    //     platformYPos, 
-                    //     Game.MAP_EL_WIDTH, 
-                    //     Game.MAP_EL_HEIGHT
-                    // );
                 }
             }
         }
@@ -106,18 +99,6 @@ class Game {
         console.log(this.player.posX,this.player.posY)
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
         this.player.draw(ctx)
-
-        // this.checkCollisions()
-        // debugger
-        // this.drawLevel(ctx,level);
-        // this.moveObjects(); 
-        // this.checkCollisions();
-
-        // player topleft
-        // player bottomright
-
-        // entity topleft
-        // entity bottomright
     }
 }
 
