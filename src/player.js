@@ -6,10 +6,11 @@ class Player {
         this.height = 57;
         this.gravity = -5;
         this.isJumping = false;
-        this.isGrounded = true
+        this.isGrounded = true;
         this.facingRight = true;
+        this.walkingFrame = 1;
         // this.facingRight = false;
-        this.isStopped = true
+        // this.isStopped = true
         this.maxXValue = gameWidth - this.width
         // this.isDashing = false;
         // this.dashLength = 20;
@@ -19,6 +20,7 @@ class Player {
         this.jumpFrameDelay = 0;
         this.velocityX = 0;
         this.velocityY = 0;
+        this.isStopped = true;
         this.maxVelocity = 100;
         this.friction = 0.2;
         // this.height = playerData["height"];
@@ -53,10 +55,51 @@ class Player {
                     this.height,
                 )
             }
+        } else if (this.isStopped) {
+            if (this.facingRight) {
+                ctx.drawImage(
+                    this.standingRightSprite,
+                    this.posX,
+                    this.posY,
+                    this.width,
+                    this.height,
+                )
+            } else {
+                ctx.drawImage(
+                    this.standingLeftSprite,
+                    this.posX,
+                    this.posY,
+                    this.width,
+                    this.height,
+                ) 
+            }
+        } else if (!this.isStopped) {
             // debugger
-            // this.jumpingSprite.onload = () => {
-            // } 
-        } else if (this.isStopped && this.facingRight) {
+            if (this.facingRight)  {
+                let img  = new Image();
+                img.src = `./assets/Player_sprites/walking/right/p2_walk${this.walkingFrame}.png`;
+                // img.onload = () => {
+                ctx.drawImage(
+                    img,
+                    this.posX,
+                    this.posY,
+                    this.width,
+                    this.height,
+                )
+                // }
+            } else {
+                let img  = new Image();
+                img.src = `./assets/Player_sprites/walking/left/p2_walk${this.walkingFrame}.png`;
+                // img.onload = () => {
+                ctx.drawImage(
+                    img,
+                    this.posX,
+                    this.posY,
+                    this.width,
+                    this.height,
+                )
+            }
+        } else {
             ctx.drawImage(
                 this.standingRightSprite,
                 this.posX,
@@ -64,17 +107,6 @@ class Player {
                 this.width,
                 this.height,
             )
-        } else if (this.isStopped && !this.facingRight) {
-            ctx.drawImage(
-                this.standingLeftSprite,
-                this.posX,
-                this.posY,
-                this.width,
-                this.height,
-            ) 
-        } else {
-            ctx.fillStyle = this.color
-            ctx.fillRect(this.posX,this.posY,this.width,this.height);
         }
     }
 
@@ -82,6 +114,7 @@ class Player {
         // if (this.velocityY === 0) this.isJumping = false;
         console.log(keysPressed)
         this.velocityX = 0;
+        this.isStopped = true;
         if (keysPressed['d']) {
             this.facingRight = true;
             this.velocityX = 7;
@@ -92,6 +125,12 @@ class Player {
         }
         
         if (this.velocityX != 0){
+            this.isStopped = false
+            if (this.walkingFrame < 12) {
+                this.walkingFrame++;
+            } else {
+                this.walkingFrame = 1;
+            }
             this.posX += this.velocityX;
             if (this.posX > this.maxXValue) {
                 this.posX = this.maxXValue;
