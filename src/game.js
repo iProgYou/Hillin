@@ -12,12 +12,15 @@ class Game {
         this.keysPressed = keysPressed;
         this.levelNum = 1
         this.level = Levels[this.levelNum].level
+        this.levelType = Levels[this.levelNum].type
+        this.spriteFilenames = Levels.spriteFilenames
         this.player = new Player({
                 pos: Levels[this.levelNum].startPos,
                 color: "#00FF00"
             },
             Game.DIM_X
         );
+
     }
 
     // draw(ctx) {
@@ -31,7 +34,7 @@ class Game {
         // ctx.clearRect(this.posX, this.posY, this.width, this.height)
 
 
-        debugger;
+        // debugger;
         
         
 
@@ -43,12 +46,12 @@ class Game {
         //     for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
         for (let i = 0; i < this.level.length; i ++) {
             for (let j = 0; j < this.level[i].length; j ++) {
-                if (this.level[i][j] === 'g') {
+                if (this.level[i][j] != 0) {
 
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
                     let img = new Image();
-                    img.src = './assets/Tiles/small/resized_grassMid.png';
+                    img.src = `./assets/Tiles/small/resized_${this.levelType}${this.spriteFilenames[this.level[i][j]]}.png`;
                     img.onload = () => {
                         ctx.drawImage(
                             img,
@@ -81,7 +84,7 @@ class Game {
 
         for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
             for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
-                if (this.level[i][j] === 'g') {
+                if (this.level[i][j] != 0) {
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
                     let mapEl = {
