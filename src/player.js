@@ -87,9 +87,6 @@ class Player {
         } else if (!this.isStopped) {
             // debugger
             if (this.facingRight)  {
-                let img  = new Image();
-                img.src = `./assets/Player_sprites/walking/right/p2_walk${this.walkingFrame}.png`;
-                // img.onload = () => {
                 ctx.drawImage(
                     this.walkingRightSpriteImgs[this.walkingFrame - 1],
                     this.posX,
@@ -99,9 +96,6 @@ class Player {
                 )
                 // }
             } else {
-                let img  = new Image();
-                img.src = `./assets/Player_sprites/walking/left/p2_walk${this.walkingFrame}.png`;
-                // img.onload = () => {
                 ctx.drawImage(
                     this.walkingLeftSpriteImgs[this.walkingFrame - 1],
                     this.posX,
