@@ -50,71 +50,33 @@ class Player {
     }
 
     draw(ctx) {
+        let drawImage = this.standingRightSprite;
         if (!this.isGrounded) {
             if (this.facingRight) {
-                ctx.drawImage(
-                    this.jumpingRightSprite,
-                    this.posX,
-                    this.posY,
-                    this.width,
-                    this.height,
-                )
+                drawImage = this.jumpingRightSprite;
             } else {
-                ctx.drawImage(
-                    this.jumpingLeftSprite,
-                    this.posX,
-                    this.posY,
-                    this.width,
-                    this.height,
-                )
+                drawImage = this.jumpingLeftSprite;
             }
         } else if (this.isStopped) {
             if (this.facingRight) {
-                ctx.drawImage(
-                    this.standingRightSprite,
-                    this.posX,
-                    this.posY,
-                    this.width,
-                    this.height,
-                )
+                drawImage = this.standingRightSprite;
             } else {
-                ctx.drawImage(
-                    this.standingLeftSprite,
-                    this.posX,
-                    this.posY,
-                    this.width,
-                    this.height,
-                ) 
+                drawImage = this.standingLeftSprite;
             }
         } else if (!this.isStopped) {
-            // debugger
             if (this.facingRight)  {
-                ctx.drawImage(
-                    this.walkingRightSpriteImgs[this.walkingFrame - 1],
-                    this.posX,
-                    this.posY,
-                    this.width,
-                    this.height,
-                )
-                // }
+                drawImage = this.walkingRightSpriteImgs[this.walkingFrame - 1];
             } else {
-                ctx.drawImage(
-                    this.walkingLeftSpriteImgs[this.walkingFrame - 1],
-                    this.posX,
-                    this.posY,
-                    this.width,
-                    this.height,
-                )
+                drawImage = this.walkingLeftSpriteImgs[this.walkingFrame - 1];
             }
-        } else {
-            ctx.drawImage(
-                this.standingRightSprite,
-                this.posX,
-                this.posY,
-                this.width,
-                this.height,
-            )
         }
+        ctx.drawImage(
+            drawImage,
+            this.posX,
+            this.posY,
+            this.width,
+            this.height,
+        )
     }
 
     move(keysPressed) {
