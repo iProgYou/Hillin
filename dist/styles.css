@@ -9,7 +9,6 @@
     width: 1400px;
     background-color: #00aef3;
     z-index: 1;
-    background-image: url('../assets/resized_galaxy.jpg');
 }
 
 canvas{

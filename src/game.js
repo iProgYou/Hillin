@@ -10,10 +10,12 @@ class Game {
         Game.MAP_EL_HEIGHT = 50;
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
-        this.levelNum = 1
-        this.level = Levels[this.levelNum].level
-        this.levelType = Levels[this.levelNum].type
-        this.spriteFilenames = Levels.spriteFilenames
+        this.levelNum = 1;
+        this.level = Levels[this.levelNum].level;
+        this.levelType = Levels[this.levelNum].type;
+        document.getElementById("background-canvas").style.backgroundImage = `url('${Levels[this.levelNum].background}')`;
+
+        this.spriteFilenames = Levels.spriteFilenames;
         this.player = new Player({
                 pos: Levels[this.levelNum].startPos,
                 color: "#00FF00"

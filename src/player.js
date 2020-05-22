@@ -9,7 +9,9 @@ class Player {
         this.isGrounded = true;
         this.facingRight = true;
         this.walkingFrame = 1;
+        this.skipFrame = false;
         this.maxWalkingFrame = 11;
+        this.startingJumpAcc = 16
         // this.facingRight = false;
         // this.isStopped = true
         this.maxXValue = gameWidth - this.width
@@ -132,7 +134,8 @@ class Player {
         if (this.velocityX != 0){
             this.isStopped = false
             if (this.walkingFrame < this.maxWalkingFrame) {
-                this.walkingFrame++;
+                if (this.skipFrame) this.walkingFrame++;
+                this.skipFrame = !this.skipFrame;
             } else {
                 this.walkingFrame = 1;
             }
@@ -150,7 +153,7 @@ class Player {
             this.isGrounded = false
             if(!this.isJumping){
                 this.isJumping = true;
-                this.jumpAcc = 14;
+                this.jumpAcc = this.startingJumpAcc;
                 this.jumpFrameDelay = 0;
             }
         }

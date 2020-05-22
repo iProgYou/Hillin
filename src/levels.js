@@ -25,7 +25,8 @@ const Levels = {
             ['l','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g'], 
         ],
         startPos: [20 ,410],
-        type: 'castle'
+        type: 'castle',
+        background: 'assets/resized_galaxy.jpg',
     },
     1: {
         level: [
@@ -45,7 +46,8 @@ const Levels = {
             ['l','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','r'], 
         ],
         startPos: [ 0 ,0 ],
-        type: 'castle'
+        type: 'sand',
+        background: 'assets/resized_galaxy.jpg',
     }
 }
 // types: grass, sand, dirt, snow, castle, stone
