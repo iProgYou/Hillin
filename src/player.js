@@ -2,11 +2,13 @@ class Player {
     constructor(playerData, gameWidth) {
         this.posX = playerData["pos"][0];
         this.posY = playerData["pos"][1];
-        this.height = 40;
-        this.width = 20;
+        this.width = 30;
+        this.height = 57;
         this.gravity = -5;
         this.isJumping = false;
+        this.isGrounded = true
         this.facingRight = true;
+        // this.facingRight = false;
         this.isStopped = true
         this.maxXValue = gameWidth - this.width
         // this.isDashing = false;
@@ -22,24 +24,73 @@ class Player {
         // this.height = playerData["height"];
         // this.width = playerData["width"];
         this.color = playerData["color"];
+        this.jumpingRightSprite = new Image();
+        this.jumpingRightSprite.src = `./assets/Player_sprites/p2_jump_right.png`;
+        this.jumpingLeftSprite = new Image();
+        this.jumpingLeftSprite.src = `./assets/Player_sprites/p2_jump_left.png`;
+        this.standingRightSprite = new Image();
+        this.standingRightSprite.src = `./assets/Player_sprites/p2_stand_right.png`;
+        this.standingLeftSprite = new Image();
+        this.standingLeftSprite.src = `./assets/Player_sprites/p2_stand_left.png`;
     }
 
     draw(ctx) {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.posX,this.posY,this.width,this.height);
+        if (!this.isGrounded) {
+            if (this.facingRight) {
+                ctx.drawImage(
+                    this.jumpingRightSprite,
+                    this.posX,
+                    this.posY,
+                    this.width,
+                    this.height,
+                )
+            } else {
+                ctx.drawImage(
+                    this.jumpingLeftSprite,
+                    this.posX,
+                    this.posY,
+                    this.width,
+                    this.height,
+                )
+            }
+            // debugger
+            // this.jumpingSprite.onload = () => {
+            // } 
+        } else if (this.isStopped && this.facingRight) {
+            ctx.drawImage(
+                this.standingRightSprite,
+                this.posX,
+                this.posY,
+                this.width,
+                this.height,
+            )
+        } else if (this.isStopped && !this.facingRight) {
+            ctx.drawImage(
+                this.standingLeftSprite,
+                this.posX,
+                this.posY,
+                this.width,
+                this.height,
+            ) 
+        } else {
+            ctx.fillStyle = this.color
+            ctx.fillRect(this.posX,this.posY,this.width,this.height);
+        }
     }
 
     move(keysPressed) {
+        // if (this.velocityY === 0) this.isJumping = false;
         console.log(keysPressed)
         this.velocityX = 0;
         if (keysPressed['d']) {
+            this.facingRight = true;
             this.velocityX = 7;
         }
         if (keysPressed['a']) {
+            this.facingRight = false;
             this.velocityX = -7;
         }
         
-
         if (this.velocityX != 0){
             this.posX += this.velocityX;
             if (this.posX > this.maxXValue) {
@@ -52,6 +103,7 @@ class Player {
         // Jump /////////////////////////////////////////
         this.velocityY = -this.gravity;
         if (keysPressed[' ']) {
+            this.isGrounded = false
             if(!this.isJumping){
                 this.isJumping = true;
                 this.jumpAcc = 14;
@@ -69,6 +121,8 @@ class Player {
             this.posY += this.velocityY;
         }
     }
+
+
 
     resolveMapCollision(mapEl) {
         let dX = (this.posX + (this.width/2)) - (mapEl.posX + (mapEl.width/2));
@@ -92,6 +146,7 @@ class Player {
             } else {
                 if (dY < 0){ // object came from the top
                     console.log("FROM TOP")
+                    this.isGrounded = true;
                     if(this.jumpFrameDelay > 10){
                         this.isJumping = false;
                     } else {
