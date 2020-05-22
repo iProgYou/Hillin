@@ -9,6 +9,7 @@ class Player {
         this.isGrounded = true;
         this.facingRight = true;
         this.walkingFrame = 1;
+        this.maxWalkingFrame = 11;
         // this.facingRight = false;
         // this.isStopped = true
         this.maxXValue = gameWidth - this.width
@@ -34,6 +35,16 @@ class Player {
         this.standingRightSprite.src = `./assets/Player_sprites/p2_stand_right.png`;
         this.standingLeftSprite = new Image();
         this.standingLeftSprite.src = `./assets/Player_sprites/p2_stand_left.png`;
+        this.walkingRightSpriteImgs = [];
+        this.walkingLeftSpriteImgs = [];
+        for (let i = 1; i <= this.maxWalkingFrame; i++) {
+            let img = new Image();
+            img.src = `./assets/Player_sprites/walking/right/p2_walk${i}.png`;
+            let imgl = new Image();
+            imgl.src = `./assets/Player_sprites/walking/left/p2_walk${i}.png`;
+            this.walkingRightSpriteImgs.push(img)
+            this.walkingLeftSpriteImgs.push(imgl)
+        }
     }
 
     draw(ctx) {
@@ -80,7 +91,7 @@ class Player {
                 img.src = `./assets/Player_sprites/walking/right/p2_walk${this.walkingFrame}.png`;
                 // img.onload = () => {
                 ctx.drawImage(
-                    img,
+                    this.walkingRightSpriteImgs[this.walkingFrame - 1],
                     this.posX,
                     this.posY,
                     this.width,
@@ -92,7 +103,7 @@ class Player {
                 img.src = `./assets/Player_sprites/walking/left/p2_walk${this.walkingFrame}.png`;
                 // img.onload = () => {
                 ctx.drawImage(
-                    img,
+                    this.walkingLeftSpriteImgs[this.walkingFrame - 1],
                     this.posX,
                     this.posY,
                     this.width,
@@ -126,7 +137,7 @@ class Player {
         
         if (this.velocityX != 0){
             this.isStopped = false
-            if (this.walkingFrame < 12) {
+            if (this.walkingFrame < this.maxWalkingFrame) {
                 this.walkingFrame++;
             } else {
                 this.walkingFrame = 1;
