@@ -7,6 +7,7 @@ class Player {
         this.gravity = -5;
         this.isJumping = false;
         this.facingRight = true;
+        this.isStopped = true
         this.maxXValue = gameWidth - this.width
         // this.isDashing = false;
         // this.dashLength = 20;
@@ -68,38 +69,6 @@ class Player {
             this.posY += this.velocityY;
         }
     }
-
-    step() {
-        
-    }
-
-    // resolveMapCollision(mapEl) {
-    //     let dX = mapEl.posX - this.posX;
-    //     let dY = mapEl.posY - this.posY;
-    //     let absX = Math.abs(dX/2);
-    //     let absY = Math.abs(dY/2);
-    //     let max_width = (mapEl.width / 2) + (this.width / 2)
-    //     let max_height = (mapEl.height / 2) + (this.height / 2)
-    //     if(absX < max_width && absY < max_height){
-    //         if(absX > absY){
-    //             if (dX > 0){ // object came from the left
-    //                 this.posX = mapEl.posX - this.width;
-    //             }
-    //             else if (dX < 0){ // object came from the right
-    //                 this.posX = mapEl.posX + mapEl.width;
-    //             }
-    //         } else {
-    //             if (dY > 0){ // object came from the top
-    //                 console.log("FROM TOP")
-    //                 this.posY = mapEl.posY - this.height;
-    //             }
-    //             else if (dY < 0){ // object came from the bottom
-    //                 console.log("FROM BOTTOM")
-    //                 this.posY = mapEl.posY + mapEl.height;
-    //             }
-    //         }
-    //     }
-    // }
 
     resolveMapCollision(mapEl) {
         let dX = (this.posX + (this.width/2)) - (mapEl.posX + (mapEl.width/2));

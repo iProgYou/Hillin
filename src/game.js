@@ -51,7 +51,7 @@ class Game {
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
                     let img = new Image();
-                    img.src = `./assets/Tiles/small/resized_${this.levelType}${this.spriteFilenames[this.level[i][j]]}.png`;
+                    img.src = `./assets/Tiles_resized/resized_${this.levelType}${this.spriteFilenames[this.level[i][j]]}.png`;
                     img.onload = () => {
                         ctx.drawImage(
                             img,
