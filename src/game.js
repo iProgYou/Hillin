@@ -8,23 +8,20 @@ class Game {
         Game.DIM_Y = 700;
         Game.MAP_EL_WIDTH = 50;
         Game.MAP_EL_HEIGHT = 50;
+        this.loadLevel(1);
         this.hazards = ['a']
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
-        this.levelNum = 0;
+        
         this.hasKey = false;
-        this.level = Levels[this.levelNum].level;
-        this.levelType = Levels[this.levelNum].type;
-        this.hazardType = Levels[this.levelNum].hazardType
-        document.getElementById("background-canvas").style.backgroundImage = `url('${Levels[this.levelNum].background}')`;
+        
         this.spriteFilenames = Levels.spriteFilenames;
         this.player = new Player({
-                pos: Levels[this.levelNum].startPos,
-                color: "#00FF00"
-            },
-            Game.DIM_X
+            pos: Levels[this.levelNum].startPos,
+            color: "#00FF00"
+        },
+        Game.DIM_X
         );
-
     }
 
     drawLevel(ctx) {
@@ -80,11 +77,23 @@ class Game {
     
     resetLevel() {
         // Reset player position
+        if (!this.player) return;
         this.player.posX = Levels[this.levelNum].startPos[0];
         this.player.posY = Levels[this.levelNum].startPos[1];
+        this.hasKey = false;
     }
     
-    step(ctx) {
+    loadLevel(levelNum) {
+        this.levelNum = levelNum;
+        this.level = Levels[this.levelNum].level;
+        this.levelType = Levels[this.levelNum].type;
+        this.hazardType = Levels[this.levelNum].hazardType
+        document.getElementById("background-canvas").style.backgroundImage = `url('${Levels[this.levelNum].background}')`;
+
+        this.resetLevel()
+    }
+
+    step(ctx,backgroundCtx) {
         this.player.move(this.keysPressed);
 
         for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
@@ -101,20 +110,26 @@ class Game {
                     }
                     if (this.checkCollisions(this.player,mapEl)) {
                         if (currentBlock === 'k') {
-                            this.hasKey = true;
-                            console.log(this.hasKey)
-                            this.drawLevel(ctx)
-                        } else if (!this.hazards.includes(currentBlock)) {
-                            this.player.resolveMapCollision(mapEl)
-
-                        } else {
+                            if (!this.hasKey) {
+                                this.hasKey = true;
+                                console.log(this.hasKey)
+                                this.drawLevel(backgroundCtx)
+                            }
+                        } else if (this.hazards.includes(currentBlock)) {
                             this.resetLevel()
+                            this.drawLevel(backgroundCtx)
+                        } else if (currentBlock === 'd' || currentBlock === 'o') {
+                            if (!this.hasKey) continue;
+                            // next level
+                            this.loadLevel(this.levelNum + 1)
+                            this.drawLevel(backgroundCtx)
+                        } else {
+                            this.player.resolveMapCollision(mapEl)
                         }
                     }
                 }
             }
         }
-        console.log(this.player.posX,this.player.posY)
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
         this.player.draw(ctx)
     }

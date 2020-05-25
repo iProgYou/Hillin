@@ -7,7 +7,7 @@ class GameView {
 
     start() { 
         this.game.drawLevel(this.backgroundCtx)
-        setInterval(() => {this.game.step(this.ctx)}, 20); 
+        setInterval(() => {this.game.step(this.ctx, this.backgroundCtx)}, 20); 
     }
 }
 

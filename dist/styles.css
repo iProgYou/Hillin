@@ -1,3 +1,9 @@
+#ui-layer { 
+    height: 700px;
+    width: 1400px;
+    z-index: 3;
+}
+
 #game-canvas { 
     height: 700px;
     width: 1400px;
@@ -11,6 +17,18 @@
     z-index: 1;
 }
 
-canvas{
+#game-container > *{
     position: absolute;
+}
+
+#music-playback{
+    top:5px;
+    right:5px;
+    position: absolute;
+    font-size: 30px;
+    user-select: none;
+}
+
+#music-playback:hover {
+    cursor: pointer;
 }

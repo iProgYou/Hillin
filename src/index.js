@@ -5,7 +5,8 @@ import GameView from './game_view';
 document.addEventListener("DOMContentLoaded", () => {
     const elCanvas = document.getElementById("game-canvas");
     const backgroundCanvas = document.getElementById("background-canvas")
-
+    const musicPlayback = document.getElementById("music-playback");
+    const audio = new Audio('./assets/music/1.mp3')
     elCanvas.height = 700;
     elCanvas.width = 1400;
     backgroundCanvas.height = 700;
@@ -18,6 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keyup", (e) => {
         keysPressed[e.key] = false;
     }, false);
+
+
+    musicPlayback.addEventListener("click", (e) => {
+        if (window.musicDisabled){
+            audio.pause()
+        } else {
+            audio.play()
+        }
+        window.musicDisabled = !window.musicDisabled;
+    })
+
+    //play the music
+    audio.play()
+    
     
     const ctx = elCanvas.getContext("2d");
     const ctxBackground = backgroundCanvas.getContext("2d");
