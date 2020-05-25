@@ -8,13 +8,14 @@ class Game {
         Game.DIM_Y = 700;
         Game.MAP_EL_WIDTH = 50;
         Game.MAP_EL_HEIGHT = 50;
+        this.hazrds = ['a']
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
-        this.levelNum = 1;
+        this.levelNum = 0;
         this.level = Levels[this.levelNum].level;
         this.levelType = Levels[this.levelNum].type;
+        this.hazardType = Levels[this.levelNum].hazardType
         document.getElementById("background-canvas").style.backgroundImage = `url('${Levels[this.levelNum].background}')`;
-
         this.spriteFilenames = Levels.spriteFilenames;
         this.player = new Player({
                 pos: Levels[this.levelNum].startPos,
@@ -25,35 +26,21 @@ class Game {
 
     }
 
-    // draw(ctx) {
-    //     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
-    //     // screen.draw or level.draw
-    //     // enamies.draw
-    //     this.player.draw(ctx)
-    // }
-
     drawLevel(ctx) {
-        // ctx.clearRect(this.posX, this.posY, this.width, this.height)
-
-
-        // debugger;
-        
-        
-
-        // screen.draw or level.draw
-        // enamies.draw
-        // level is a 2d array
-        // i = y coord, j = x coord
-        // for (let i = 0; i < Game.DIM_Y / Game.MAP_EL_HEIGHT; i ++) {
-        //     for (let j = 0; j < Game.DIM_X / Game.MAP_EL_WIDTH; j ++) {
         for (let i = 0; i < this.level.length; i ++) {
             for (let j = 0; j < this.level[i].length; j ++) {
-                if (this.level[i][j] != 0) {
-
+                let currentBlock = this.level[i][j];
+                if (currentBlock != 0) {
+                    let img = new Image();
                     let platformXPos = j * Game.MAP_EL_WIDTH;
                     let platformYPos = i * Game.MAP_EL_HEIGHT;
-                    let img = new Image();
-                    img.src = `./assets/Tiles_resized/resized_${this.levelType}${this.spriteFilenames[this.level[i][j]]}.png`;
+
+                    if (this.hazrds.includes(currentBlock)) {
+                        img.src = `./assets/Tiles_resized/resized_liquid${this.hazardType}${this.spriteFilenames[this.level[i][j]]}.png`
+                    } else {
+                        img.src = `./assets/Tiles_resized/resized_${this.levelType}${this.spriteFilenames[this.level[i][j]]}.png`;
+                    }
+
                     img.onload = () => {
                         ctx.drawImage(
                             img,
@@ -61,10 +48,6 @@ class Game {
                             platformYPos,
                             img.width,
                             img.height,
-                            // platformXPos, 
-                            // platformYPos, 
-                            // Game.MAP_EL_WIDTH, 
-                            // Game.MAP_EL_HEIGHT
                         )
                     }
                 }
@@ -79,7 +62,9 @@ class Game {
         ((objA.posY + objA.height) > objB.posY)) 
     }
     
+    resetLevel() {
 
+    }
     
     step(ctx) {
         this.player.move(this.keysPressed);

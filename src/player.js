@@ -84,11 +84,11 @@ class Player {
         console.log(keysPressed)
         this.velocityX = 0;
         this.isStopped = true;
-        if (keysPressed['d']) {
+        if (keysPressed['d'] || keysPressed['ArrowRight']) {
             this.facingRight = true;
             this.velocityX = 7;
         }
-        if (keysPressed['a']) {
+        if (keysPressed['a'] || keysPressed['ArrowLeft']) {
             this.facingRight = false;
             this.velocityX = -7;
         }
