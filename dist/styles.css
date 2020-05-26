@@ -42,3 +42,24 @@ html {
 #music-playback:hover {
     cursor: pointer;
 }
+
+.socials {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: flex-end; */
+}
+
+footer {
+    margin: 4%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
