@@ -81,6 +81,7 @@ class Player {
 
     move(keysPressed) {
         // if (this.velocityY === 0) this.isJumping = false;
+        console.log(this.posX,this.posY)
         this.velocityX = 0;
         this.isStopped = true;
         if (keysPressed['d'] || keysPressed['ArrowRight']) {
@@ -145,15 +146,12 @@ class Player {
         if(oX > 0 && oY > 0){
             if(oY > oX){
                 if (dX < 0){ // object came from the left
-                    console.log("FROM LEFT")
                     this.posX -= oX;
                 } else { //if (dX > 0) object came from the right
-                    console.log("FROM RIGHT")
                     this.posX += oX;
                 }
             } else {
                 if (dY < 0){ // object came from the top
-                    console.log("FROM TOP")
                     this.isGrounded = true;
                     if(this.jumpFrameDelay > 10){
                         this.isJumping = false;
@@ -163,8 +161,6 @@ class Player {
                     this.posY -= oY;
                 }
                 else { // object came from the bottom
-
-                    console.log("FROM BOTTOM")
                     this.posY += oY;
                 }
             } 

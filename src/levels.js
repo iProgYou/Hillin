@@ -5,7 +5,7 @@ const Levels = {
         'r':    'Right', // rounded right side with squiggly
         'c':    'Center_rounded', // rounded with squiggly
         'b':    '', // rounded with squiggly
-        'p':    'Center', // pointed edgges no squiggly
+        'i':    'Center', // pointed edgges no squiggly
         'v':    'CliffLeftAlt', // left inner cliff curve
         'u':    'CliffRightAlt', // right inner cliff curve
         'p':    'CliffLeft', // left outer cliff curve
@@ -33,32 +33,35 @@ const Levels = {
             [ 0 , 0 ,'l','a','a','a','a','a','r', 0 , 0 ,'l','g','g','g','r','k', 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
             ['l','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','a','a','a','a','a','a','a','a','a','a'], 
         ],
-        // startPos: [20 ,600], // actual start pos
-        startPos: [857,143], // testing starting pos
+        startPos: [20 ,600], // actual start pos
+        // startPos: [857,143], // testing starting pos
         type: 'sand',
-        background: 'assets/backgrounds/desert.jpg',
+        background: 'assets/Backgrounds/desert.jpg',
         hazardType: 'Lava'
     },
     1: {
         level: [
             [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
-            ['l','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','r', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'b', 0 ,'b', 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'l','g','g','g','g','g','g','g','g','r', 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 'o' , 0 ], 
-            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 'k' , 0 , 'd' , 0 ], 
-            ['l','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','r'], 
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'k', 0 , 0 , 0 , 0 ],
+            ['l','g','a','a','a','g','g','a','a','a','g','g','g','g','g','g','r', 0 , 0 , 0 , 0 , 0 ,'v','g','u', 0 , 0 , 0 ], 
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'l','a','a','a','r', 0 , 0 ,'i', 0 ,'b', 0 , 0 ], 
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'l','g','g','g','r', 0 , 0 ,'i', 0 , 0 , 0 ,'b'], 
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 ,'b', 0 ], 
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'l','g','r', 0 , 0 , 0 , 0 ], 
+            [ 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 ,'p','t', 0 , 0 ,'l','i','i','i','r', 0 , 0 , 0 ], 
+            [ 0 ,'l','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','i','i','i', 0 , 0 , 0 , 0 ,'b'], 
+            [ 0 ,'p','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','r','i','i', 0 , 0 , 0 ,'b', 0 ], 
+            [ 0 , 0 , 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'i','i','r', 0 , 0 , 0 , 0 ], 
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'i','i','i','r', 0 ,'o', 0 ], 
+            [ 0 , 0 , 0 ,'b', 0 , 0 , 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'d','b'], 
+            ['l','g','g','g','g','g','g','g','a','a','a','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','r'], 
         ],
-        startPos: [ 0 ,0 ],
+        // startPos: [ 0 ,0 ],
+        startPos: [ 792 ,43 ],
         type: 'grass',
-        background: 'assets/backgrounds/grass.jpg',
+        background: 'assets/Backgrounds/grass.jpg',
+        hazardType: 'Water'
+
     },
     2 : {
         level: [
@@ -79,7 +82,7 @@ const Levels = {
         ],
         startPos: [20 ,410],
         type: 'stone',
-        background: 'assets/backgrounds/rock.jpg',
+        background: 'assets/Backgrounds/rock.jpg',
     },
     3 : {
         level: [
@@ -100,7 +103,7 @@ const Levels = {
         ],
         startPos: [20 ,410],
         type: 'snow',
-        background: 'assets/backgrounds/snow.jpg',
+        background: 'assets/Backgrounds/snow.jpg',
     },
 }
 // types: grass, snow, sand, dirt, stone

@@ -1,3 +1,7 @@
+html {
+    background-color: black;
+}
+
 #ui-layer { 
     height: 700px;
     width: 1400px;
@@ -17,8 +21,14 @@
     z-index: 1;
 }
 
+#game-container {
+    display: flex;
+    justify-content: center;
+}
+
 #game-container > *{
     position: absolute;
+
 }
 
 #music-playback{
