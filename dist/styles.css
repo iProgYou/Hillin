@@ -51,6 +51,7 @@ html {
 
 footer {
     /* margin: 4%; */
+    padding-bottom: 4%;
     width: 99%;
     position: absolute;
     bottom: 0;
