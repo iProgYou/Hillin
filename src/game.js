@@ -8,7 +8,7 @@ class Game {
         Game.DIM_Y = 700;
         Game.MAP_EL_WIDTH = 50;
         Game.MAP_EL_HEIGHT = 50;
-        this.loadLevel(2);
+        this.loadLevel(0);
         this.hazards = ['a']
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
