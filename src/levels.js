@@ -80,8 +80,8 @@ const Levels = {
             [ 0 ,'b', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
             ['l','g','g','g','g','g','a','g','g','g','g','a','g','g','g','g','a','g','g','g','g','a','g','g','g','g','g','g'], 
         ],
-        // startPos: [20 ,210],
-        startPos: [1070 ,393],
+        startPos: [20 ,210], // actual pos
+        // startPos: [1070 ,393],// starting pos
         type: 'stone',
         background: 'assets/Backgrounds/rock.jpg',
         hazardType: 'Water'
