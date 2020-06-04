@@ -64,3 +64,17 @@ img {
     height: 100px;
     width: 100px;
 }
+
+.harmony {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    border-radius: 25%;
+    background-color: white;
+}
+
+.harmony > img{
+    height: 80%;
+    width: 80%;
+}

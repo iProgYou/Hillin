@@ -8,7 +8,7 @@ class Game {
         Game.DIM_Y = 700;
         Game.MAP_EL_WIDTH = 50;
         Game.MAP_EL_HEIGHT = 50;
-        this.loadLevel(0);
+        this.loadLevel(3);
         this.hazards = ['a']
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
@@ -19,9 +19,7 @@ class Game {
         this.player = new Player({
             pos: Levels[this.levelNum].startPos,
             color: "#00FF00"
-        },
-        Game.DIM_X
-        );
+        }, Game.DIM_X);
     }
 
     drawLevel(ctx) {
