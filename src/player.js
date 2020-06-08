@@ -153,7 +153,7 @@ class Player {
             } else {
                 if (dY < 0){ // object came from the top
                     this.isGrounded = true;
-                    if(this.jumpFrameDelay > 10){
+                    if(this.jumpFrameDelay > 5){
                         this.isJumping = false;
                     } else {
                         this.jumpFrameDelay++;

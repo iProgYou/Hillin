@@ -13,7 +13,8 @@ class Game {
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
         
-        this.hasKey = false;
+        // this.hasKey = false; // UNCOMMENT THIS WHEN GOING TO PROD
+        this.hasKey = true;
         
         this.spriteFilenames = Levels.spriteFilenames;
         this.player = new Player({
@@ -25,7 +26,7 @@ class Game {
     drawLevel(ctx) {
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
         for (let i = 0; i < this.level.length; i ++) {
-            for (let j = 0; j < this.level[i].length; j ++) {
+            for (let j = 0; j < this.level[i].length; j++) {
                 let currentBlock = this.level[i][j];
                 if (currentBlock != 0) {
                     let img = new Image();
@@ -78,10 +79,21 @@ class Game {
         if (!this.player) return;
         this.player.posX = Levels[this.levelNum].startPos[0];
         this.player.posY = Levels[this.levelNum].startPos[1];
-        this.hasKey = false;
+        this.hasKey = false; // UNCOMMENT THIS WHEN GOING TO PROD
+    }
+
+    endScreen() {
+        window.gameIntervalId = null;
+        const endScreen = document.getElementById("endgame-screen");
+        endScreen.style.display = '';
+        //  in index.html make an endscreen el with display none
+        //  set to display here
+        //  description of game bloob
+        //  controls
     }
     
     loadLevel(levelNum) {
+        if (levelNum === 4) this.endScreen();
         this.levelNum = levelNum;
         this.level = Levels[this.levelNum].level;
         this.levelType = Levels[this.levelNum].type;

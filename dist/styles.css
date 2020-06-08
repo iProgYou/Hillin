@@ -1,5 +1,7 @@
 html {
     background-color: black;
+    background-image: url("../assets/background.jpg");
+    font-family: sans-serif;
 }
 
 #ui-layer { 
@@ -17,7 +19,8 @@ html {
 #background-canvas{
     height: 700px;
     width: 1400px;
-    background-color: #00aef3;
+    /* background-color: #00aef3; */
+    background-image: url("../assets/Backgrounds/resized_galaxy.jpg");
     z-index: 1;
 }
 
@@ -40,7 +43,7 @@ html {
 }
 
 #music-playback:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .socials {
@@ -52,12 +55,13 @@ html {
 footer {
     /* margin: 4%; */
     padding-bottom: 4%;
-    width: 99%;
+    width: 80%;
     position: absolute;
     bottom: 0;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+    margin: 0px 9%;
 }
 
 img {
@@ -77,4 +81,57 @@ img {
 .harmony > img{
     height: 80%;
     width: 80%;
+}
+
+#start-game-screen {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    background-color: #00aef3;
+    width: 9%;
+    font-size: 3.2rem;
+    border-radius: 8%;
+    text-align: center;
+    box-shadow: 1px 1px #027fb1;
+}
+
+#start-button {
+    
+}
+
+#start-button:hover {
+    cursor: pointer;
+    background-color: #027fb1;
+}
+
+#restart-game {
+    z-index: 0;
+}
+
+#start-game:active {
+    outline: 0 none;
+}
+
+#endgame-screen {
+    display: none;
+    height: 100%;
+    background-color: rgb(90, 45, 45);
+}
+
+.description {
+    background-color: #00aef3;
+    font-size: 1.5rem;
+    padding: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+}
+
+.description > li {
+    margin: 10px 0;
+    list-style-type: none;
 }

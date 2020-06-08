@@ -6,14 +6,33 @@
     <link rel="stylesheet" href="./dist/styles.css">
     <script src="./dist/main.js"></script>
     <title>Hillin</title>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
 </head>
 <body>
     <div id="game-container">
         <div id="ui-layer">
             <div id="music-playback">🔊</div>
+            <section id="start-game-screen">
+                <div class="button" id="start-button">Play</div>
+                <ul class="description">
+                    <li>Help Bloo navigate to the end!</li>
+                    <li>Collect keys to open doors</li>
+                    <li>Use left arrow and right arrow or 'a' and 'd' to move around</li>
+                    <li>Use spacebar to jump</li>
+                </ul>
+            </section>
+            <div id="endgame-screen">
+                <div>
+                    GAME OVER
+                </div>
+                <div class="button" id="restart-game">Replay</div>
+            </div>
         </div>
         <canvas id="game-canvas"></canvas>
         <canvas id="background-canvas"></canvas>
+    </div>
+    <div>
+
     </div>
 </body>
 <footer>

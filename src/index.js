@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const elCanvas = document.getElementById("game-canvas");
     const backgroundCanvas = document.getElementById("background-canvas")
     const musicPlayback = document.getElementById("music-playback");
+    const startGameButton = document.getElementById("start-button");
+    const startGameScreen = document.getElementById("start-game-screen")
     const audio = new Audio('./assets/Music/1.mp3')
     elCanvas.height = 700;
     elCanvas.width = 1400;
@@ -36,8 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const ctx = elCanvas.getContext("2d");
     const ctxBackground = backgroundCanvas.getContext("2d");
-    window.game = new Game(keysPressed);
-    const gameView = new GameView(ctx,ctxBackground,game);
-    gameView.start();
+
+    startGameButton.addEventListener("click", (e) => {
+        keysPressed = {};
+        window.game = new Game(keysPressed);
+        const gameView = new GameView(ctx,ctxBackground,game);
+        gameView.start();
+        startGameScreen.style.display = "none"
+    })
 
 })
