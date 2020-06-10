@@ -81,7 +81,7 @@ class Player {
 
     move(keysPressed) {
         // if (this.velocityY === 0) this.isJumping = false;
-        console.log(this.posX,this.posY)
+        //console.log(this.posX,this.posY)
         this.velocityX = 0;
         this.isStopped = true;
         if (keysPressed['d'] || keysPressed['ArrowRight']) {

@@ -83,9 +83,8 @@ class Game {
     }
 
     endScreen() {
-        window.gameIntervalId = null;
         const endScreen = document.getElementById("endgame-screen");
-        endScreen.style.display = '';
+        endScreen.style.display = 'block';
         //  in index.html make an endscreen el with display none
         //  set to display here
         //  description of game bloob

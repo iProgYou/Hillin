@@ -92,19 +92,22 @@ img {
 }
 
 .button {
+    display: inline-block;
     background-color: #00aef3;
-    width: 9%;
+    min-width: 125px;
     font-size: 3.2rem;
-    border-radius: 8%;
+    border-radius: 10px;
     text-align: center;
     box-shadow: 1px 1px #027fb1;
+    color: black;
+    padding: 0 10px
 }
 
 #start-button {
     
 }
 
-#start-button:hover {
+.button:hover {
     cursor: pointer;
     background-color: #027fb1;
 }
@@ -120,7 +123,8 @@ img {
 #endgame-screen {
     display: none;
     height: 100%;
-    background-color: rgb(90, 45, 45);
+    background-color: black;
+    color: #00aef3;
 }
 
 .description {
@@ -134,4 +138,19 @@ img {
 .description > li {
     margin: 10px 0;
     list-style-type: none;
+}
+
+.bloo {
+    position: absolute;
+    top: 44%;
+    left: 30%;
+    z-index: -1;
+}
+
+.title {
+    margin-bottom: 20px;
+    color: #00aef3;
+    font-size: 100px;
+    margin: 0;
+    padding-bottom: 70px;
 }

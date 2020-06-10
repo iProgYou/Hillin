@@ -8,11 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const musicPlayback = document.getElementById("music-playback");
     const startGameButton = document.getElementById("start-button");
     const startGameScreen = document.getElementById("start-game-screen")
+    const endGameScreen = document.getElementById("endgame-screen")
+    const restartGameButton = document.getElementById("restart-game")
     const audio = new Audio('./assets/Music/1.mp3')
     elCanvas.height = 700;
     elCanvas.width = 1400;
     backgroundCanvas.height = 700;
     backgroundCanvas.width = 1400;
+
+    let gameView = null;
 
     let keysPressed = {};
     document.addEventListener("keydown", (e) => {
@@ -38,13 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const ctx = elCanvas.getContext("2d");
     const ctxBackground = backgroundCanvas.getContext("2d");
-
-    startGameButton.addEventListener("click", (e) => {
+    const startGame = () => {
         keysPressed = {};
         window.game = new Game(keysPressed);
-        const gameView = new GameView(ctx,ctxBackground,game);
+        gameView = new GameView(ctx,ctxBackground,game);
         gameView.start();
         startGameScreen.style.display = "none"
+        endGameScreen.style.display = "none"
+    }
+    startGameButton.addEventListener("click", (e) => {
+        startGame()
+    })
+
+    restartGameButton.addEventListener("click", (e) => {
+        startGame()
     })
 
 })

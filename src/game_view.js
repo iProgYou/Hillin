@@ -6,9 +6,11 @@ class GameView {
     }
 
     start() { 
-        this.game.drawLevel(this.backgroundCtx)
+        this.game.drawLevel(this.backgroundCtx)        
         if(window.gameIntervalId) clearInterval(window.gameIntervalId);
-        window.gameIntervalId = setInterval(() => {this.game.step(this.ctx, this.backgroundCtx)}, 20); 
+        
+        window.gameIntervalId = setInterval(() => {this.game.step(this.ctx, this.backgroundCtx)}, 20);
+
     }
 }
 
