@@ -26,6 +26,28 @@ document.addEventListener("DOMContentLoaded", () => {
         keysPressed[e.key] = false;
     }, false);
 
+    window.dance = (on) => {
+        if (on) {
+            const bloo1 = document.getElementById("bloo-end-1")
+            const bloo2 = document.getElementById("bloo-end-2")
+            let switchin = true;
+            window.danceInterval = setInterval(() => {
+
+                if(switchin) {
+                    bloo1.src = "./assets/Player_sprites/p2_jump_left.png"
+                    bloo2.src = "./assets/Player_sprites/p2_jump_right.png"
+                    switchin = false
+                } else {
+                    bloo2.src = "./assets/Player_sprites/p2_jump_left.png"
+                    bloo1.src = "./assets/Player_sprites/p2_jump_right.png"
+                    switchin = true
+                }
+            }, 150)
+        } else {
+            clearInterval(window.danceInterval)
+        }
+
+    }
 
     musicPlayback.addEventListener("click", (e) => {
         if (window.musicDisabled){
@@ -51,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         endGameScreen.style.display = "none"
     }
     startGameButton.addEventListener("click", (e) => {
-        startGame()
+        startGame() 
     })
 
     restartGameButton.addEventListener("click", (e) => {
