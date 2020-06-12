@@ -103,8 +103,8 @@ const Levels = {
             ['b', 0 , 0 , 0 ,'k', 0 ,'b','d', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ], 
             ['l','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','g','r'], 
         ],
-        // startPos: [0, 0],
-        startPos: [443, 593],
+        startPos: [0, 0],
+        // startPos: [443, 593],
         type: 'snow',
         background: 'assets/Backgrounds/snow.jpg',
         hazardType: 'Water'
