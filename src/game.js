@@ -8,13 +8,13 @@ class Game {
         Game.DIM_Y = 700;
         Game.MAP_EL_WIDTH = 50;
         Game.MAP_EL_HEIGHT = 50;
-        this.loadLevel(3);
+        this.loadLevel(0);
         this.hazards = ['a']
         this.ground_color = "#000000"
         this.keysPressed = keysPressed;
         
-        // this.hasKey = false; // UNCOMMENT THIS WHEN GOING TO PROD
-        this.hasKey = true;
+        this.hasKey = false; // UNCOMMENT THIS WHEN GOING TO PROD
+        // this.hasKey = true;
         
         this.spriteFilenames = Levels.spriteFilenames;
         this.player = new Player({
