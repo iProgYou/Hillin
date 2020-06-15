@@ -122,7 +122,6 @@ class Game {
                         if (currentBlock === 'k') {
                             if (!this.hasKey) {
                                 this.hasKey = true;
-                                console.log(this.hasKey)
                                 this.drawLevel(backgroundCtx)
                             }
                         } else if (this.hazards.includes(currentBlock)) {
